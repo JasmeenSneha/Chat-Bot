@@ -1,0 +1,637 @@
+{
+  "intents": [
+    {
+      "intent": "ASN_Issue",
+      "examples": [
+        {
+          "text": "ASN"
+        },
+        {
+          "text": "ASN error"
+        },
+        {
+          "text": "ASN Issue"
+        },
+        {
+          "text": "ASN not possible"
+        },
+        {
+          "text": "Cant create ASN"
+        },
+        {
+          "text": "Error"
+        },
+        {
+          "text": "external ID used"
+        },
+        {
+          "text": "Hu Error"
+        },
+        {
+          "text": "Issue"
+        },
+        {
+          "text": "Missing PO"
+        },
+        {
+          "text": "Quantity Exceeded"
+        },
+        {
+          "text": "Quantity Mismatch"
+        },
+        {
+          "text": "Unable to create ASN"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Thankyou",
+      "examples": [
+        {
+          "text": "bye"
+        },
+        {
+          "text": "issue resolved"
+        },
+        {
+          "text": "ok"
+        },
+        {
+          "text": "okay"
+        },
+        {
+          "text": "thanks"
+        },
+        {
+          "text": "Thanks'"
+        },
+        {
+          "text": "Thanks for your help"
+        },
+        {
+          "text": "thank you"
+        },
+        {
+          "text": "Will raise the ticket"
+        },
+        {
+          "text": "Will try"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Time",
+      "examples": [
+        {
+          "text": "Support time"
+        },
+        {
+          "text": "Ticket time"
+        },
+        {
+          "text": "Time line"
+        },
+        {
+          "text": "Time to reslove"
+        },
+        {
+          "text": "Time to resolve"
+        },
+        {
+          "text": "When can I expect a response"
+        },
+        {
+          "text": "When will I get reply"
+        },
+        {
+          "text": "When will the ticket be resolved"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "User_Creation",
+      "examples": [
+        {
+          "text": "Create user"
+        },
+        {
+          "text": "Create user id and password"
+        },
+        {
+          "text": "Create Vendor"
+        },
+        {
+          "text": "Create Vendor Credentials"
+        },
+        {
+          "text": "Create Vendor Portal Credentials"
+        },
+        {
+          "text": "User ID"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "User_Guide",
+      "examples": [
+        {
+          "text": "Create ASN"
+        },
+        {
+          "text": "How to create ASN"
+        },
+        {
+          "text": "How to place ASN"
+        },
+        {
+          "text": "How to use Vendor Portal"
+        },
+        {
+          "text": "User Guide"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Welcome",
+      "examples": [
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "Hey"
+        },
+        {
+          "text": "Hi"
+        },
+        {
+          "text": "hiii"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "ASN",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "External ID Already Used",
+          "synonyms": [
+            "Invalid External ID"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "HU Error",
+          "synonyms": [
+            "HU Error Used"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Missing PO",
+          "synonyms": [
+            "PO not Visible"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Other Issue",
+          "synonyms": [
+            "New Issue"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Quantity Exceeded",
+          "synonyms": [
+            "Quantity Missmatch"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-currency",
+      "values": []
+    },
+    {
+      "entity": "sys-date",
+      "values": []
+    },
+    {
+      "entity": "sys-number",
+      "values": []
+    },
+    {
+      "entity": "sys-percentage",
+      "values": []
+    },
+    {
+      "entity": "sys-time",
+      "values": []
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    },
+    "from-sample": true
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "digress_in": "does_not_return",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_3_1608219164846",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_2_1608246395192",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1608246395205",
+      "previous_sibling": "handler_4_1608246395205"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_2_1608246395192",
+      "event_name": "input",
+      "dialog_node": "handler_4_1608246395205"
+    },
+    {
+      "type": "standard",
+      "title": "GoodBye",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thanks for reaching out to us!!"
+              },
+              {
+                "text": "Thanks, See you soon!!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Good_Bye",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_3_1608219164846",
+      "previous_sibling": "node_3_1658562309963"
+    },
+    {
+      "type": "standard",
+      "title": "User Guide",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Kindly check the following link to get the Vendor Portal User Guide.                  https://www.arvind.com/"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#User_Guide",
+      "dialog_node": "node_3_1658561847253",
+      "previous_sibling": "node_5_1608244637292"
+    },
+    {
+      "type": "standard",
+      "title": "Create User",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Kindly create a ticket with the following details.    1. Vendor Code  2. Company Name  3.Vendor Email ID .     \nYou can use the following URL to raise the ticket. https://arvindlifestyle.freshservice.com/helpdesk/tickets/new                                                                             \nOur Agent will contact you within 16 Hours."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#User_Creation",
+      "dialog_node": "node_3_1658562309963",
+      "previous_sibling": "node_3_1658561847253"
+    },
+    {
+      "type": "standard",
+      "title": "Missing PO",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Kindly clear your Browser Cache and reopen the Vendor portal website.    If you are still facing the issue then kindly raise a ticket with the details of Missing PO.                                                  \n\nYou can use the following URL to raise the ticket.  https://arvindlifestyle.freshservice.com/helpdesk/tickets/new                                                                             \nOur Agent will contact you within 16 Hours.\n"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1658681719980",
+      "conditions": "@ASN:(Missing PO)",
+      "dialog_node": "node_3_1658682299100"
+    },
+    {
+      "type": "standard",
+      "title": "External Id already used",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "External ID Already Used Error message arises when the entered Invoice Number has been already used for other ASN. Kindly Enter a new Invoice number and place the ASN.  \n                    \nIf the issue still persists then kindly raise the ticket with the PO details and the packing list so we can resolve the issue ASAP.\n\nYou can use the following URL to raise the ticket.  https://arvindlifestyle.freshservice.com/helpdesk/tickets/new                                                                             \nOur Agent will contact you within 16 Hours."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1658681719980",
+      "conditions": "@ASN:(External ID Already Used)",
+      "dialog_node": "node_3_1658682810063",
+      "previous_sibling": "node_8_1658682586242"
+    },
+    {
+      "type": "standard",
+      "title": "Quantity Exceeded",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Quantity Exceeded error message arises if the quantity mentioned in the packing list is more than the Vector/ PO quantity available.  Kindly check the PO/ Vector quantity mentioned in the portal and place ASN accordingly. \n\nIf the issue still persists then kindly raise the ticket with the PO details and the packing list so we can resolve the issue ASAP.\n\nYou can use the following URL to raise the ticket.  https://arvindlifestyle.freshservice.com/helpdesk/tickets/new                                                                             \nOur Agent will contact you within 16 Hours."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1658681719980",
+      "conditions": "@ASN:(Quantity Exceeded)",
+      "dialog_node": "node_3_1658683024265",
+      "previous_sibling": "node_3_1658682810063"
+    },
+    {
+      "type": "standard",
+      "title": "Greeting",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello, How Can I help you today?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "#Welcome",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_5_1608244637292",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_6_1658681719980"
+    },
+    {
+      "type": "standard",
+      "title": "Option",
+      "output": {
+        "generic": [
+          {
+            "title": "Kindly Select the ASN Issue you are facing",
+            "options": [
+              {
+                "label": "Missing PO",
+                "value": {
+                  "input": {
+                    "text": "PO not Visible"
+                  }
+                }
+              },
+              {
+                "label": "HU Error",
+                "value": {
+                  "input": {
+                    "text": "HU Error used"
+                  }
+                }
+              },
+              {
+                "label": "External ID Already Used",
+                "value": {
+                  "input": {
+                    "text": "Duplicate External ID"
+                  }
+                }
+              },
+              {
+                "label": "Quantity Exceeded",
+                "value": {
+                  "input": {
+                    "text": "Quantity Mismatch"
+                  }
+                }
+              },
+              {
+                "label": "Other Issue",
+                "value": {
+                  "input": {
+                    "text": "New Issue"
+                  }
+                }
+              }
+            ],
+            "description": "",
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "#ASN_Issue",
+      "dialog_node": "node_6_1658681719980",
+      "previous_sibling": "node_6_1658683772086"
+    },
+    {
+      "type": "standard",
+      "title": "Other Issue",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Kindly raise a ticket with the detailed description of the issue you are  facing along with the relevant information. Please provide PO number , Packing list and the user credentials so we can resolve the issue ASAP.\n\n\nYou can use the following URL to raise the ticket.  https://arvindlifestyle.freshservice.com/helpdesk/tickets/new                                                                             \nOur Agent will contact you within 16 Hours."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1658681719980",
+      "conditions": "@ASN:(Other Issue)",
+      "dialog_node": "node_6_1658683397999",
+      "previous_sibling": "node_3_1658683024265"
+    },
+    {
+      "type": "standard",
+      "title": "Thanks",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thanks For Contacting Vendor Portal Support."
+              },
+              {
+                "text": "https://us-south.assistant.watson.cloud.ibm.com/#"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Thankyou",
+      "dialog_node": "node_6_1658683772086",
+      "previous_sibling": "node_8_1658684803316"
+    },
+    {
+      "type": "standard",
+      "title": "HU Error",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "HU Error is caused if the correct ASN template is not uploaded. Kindly download a fresh template and reupload the same. Make sure that all the information are correctly filled in the \nTemplate.                                                                                                                                                           \nIf the issue still persists then kindly raise the ticket with the PO details and the packing list so we can resolve the issue ASAP.\n\nYou can use the following URL to raise the ticket.  https://arvindlifestyle.freshservice.com/helpdesk/tickets/new                                                                             \nOur Agent will contact you within 16 Hours."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1658681719980",
+      "conditions": "@ASN:(HU Error)",
+      "dialog_node": "node_8_1658682586242",
+      "previous_sibling": "node_3_1658682299100"
+    },
+    {
+      "type": "standard",
+      "title": "Support Time",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Our Agent will respond to the ticket within 16 Hrs. Kindly note that our support is only available from Monday to Saturday. You can also call our Agents on this Number : 9999999999       (Time: 10AM to 6 PM)."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Time",
+      "dialog_node": "node_8_1658684803316",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "slot",
+      "parent": "node_5_1608244637292",
+      "dialog_node": "slot_2_1608246395192"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello, Welcome to Vendor Portal Chat Bot"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "digress_in": "returns",
+      "dialog_node": "Welcome",
+      "digress_out": "allow_all"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "Order",
+  "language": "en",
+  "description": ""
+}
